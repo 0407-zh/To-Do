@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SingleCardView: View {
     @EnvironmentObject var userData: ToDo
+    @State var showEditingPage: Bool = false
     var index: Int
     
     var body: some View {
@@ -17,17 +18,31 @@ struct SingleCardView: View {
                 .frame(width: 6)
                 .foregroundColor(.blue)
             
-            VStack(alignment: .leading, spacing: 6){
-                Text(userData.todoList[index].title)
-                    .font(.headline)
-                    .fontWeight(.heavy)
-                Text(userData.todoList[index].duedate.description)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+            //点击已创建事项进行编辑
+            Button(action: {
+                showEditingPage = true
+            }){
+                Group{
+                    VStack(alignment: .leading, spacing: 6){
+                        Text(userData.todoList[index].title)
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .fontWeight(.heavy)
+                        Text(userData.todoList[index].duedate.description)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.leading)
+                    
+                    Spacer()
+                }
             }
-            .padding(.leading)
-            
-            Spacer()
+            .sheet(isPresented: $showEditingPage, content: {
+                EditingPage(title: userData.todoList[index].title,
+                            duedate: userData.todoList[index].duedate,
+                            id: index)
+                    .environmentObject(userData)
+            })
             
             Image(systemName: userData.todoList[index].isChecked ? "checkmark.square" : "square")
                 .imageScale(.large)
@@ -43,8 +58,9 @@ struct SingleCardView: View {
     }
 }
 
+
 struct SingleCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleCardView(index: 0)
+        SingleCardView(index: 1)
     }
 }

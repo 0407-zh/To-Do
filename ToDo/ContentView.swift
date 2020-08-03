@@ -12,14 +12,44 @@ struct ContentView: View {
                                      SingleToDo(title: "Swift", duedate: Date()),
                                      SingleToDo(title: "Xcode", duedate: Date())
     ])
+    @State var showEditingPage = false
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: true/*显示滚动条*/) {
-            VStack{
-                ForEach(userdata.todoList){ item in
-                    SingleCardView(index: item.id)
-                        .environmentObject(userdata)
-                        .padding(.bottom, 10)
+        ZStack{
+            NavigationView{
+                ScrollView(.vertical, showsIndicators: true/*显示滚动条*/) {
+                    VStack{
+                        ForEach(userdata.todoList){ item in
+                            SingleCardView(index: item.id)
+                                .environmentObject(userdata)
+                                .padding(.top)
+                                .padding(.horizontal)
+                        }
+                    }
+                }
+                .navigationTitle("ToDo")
+            }
+        
+            HStack{
+                Spacer()
+                
+                VStack{
+                    Spacer()
+                    
+                    Button(action: {
+                        showEditingPage = true
+                    }){
+                        Image(systemName: "pencil.tip.crop.circle.badge.plus")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 80)
+                            .foregroundColor(.blue)
+                            .padding(.trailing)
+                    }
+                    .sheet(isPresented: $showEditingPage, content: {
+                        EditingPage()
+                            .environmentObject(userdata)
+                    })
                 }
             }
         }

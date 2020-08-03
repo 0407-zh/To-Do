@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD67673624D8229700521118 /* EditingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67673524D8229700521118 /* EditingPage.swift */; };
 		ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */; };
 		ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF900124D7FE49006A1399 /* SceneDelegate.swift */; };
 		ADDF900424D7FE49006A1399 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF900324D7FE49006A1399 /* ContentView.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD67673524D8229700521118 /* EditingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingPage.swift; sourceTree = "<group>"; };
 		ADDF8FFC24D7FE49006A1399 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADDF900124D7FE49006A1399 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				ADDF903124D8076C006A1399 /* UserData.swift */,
 				ADDF900324D7FE49006A1399 /* ContentView.swift */,
 				ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */,
+				AD67673524D8229700521118 /* EditingPage.swift */,
 				ADDF900524D7FE4A006A1399 /* Assets.xcassets */,
 				ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */,
 				ADDF900D24D7FE4A006A1399 /* Info.plist */,
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */,
+				AD67673624D8229700521118 /* EditingPage.swift in Sources */,
 				ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */,
 				ADDF903224D8076C006A1399 /* UserData.swift in Sources */,
 				ADEE743724D80D4C0010C2D8 /* SingleCardView.swift in Sources */,
