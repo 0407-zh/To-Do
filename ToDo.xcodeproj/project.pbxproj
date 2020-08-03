@@ -15,6 +15,8 @@
 		ADDF900C24D7FE4A006A1399 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */; };
 		ADDF901724D7FE4A006A1399 /* ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF901624D7FE4A006A1399 /* ToDoTests.swift */; };
 		ADDF902224D7FE4A006A1399 /* ToDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF902124D7FE4A006A1399 /* ToDoUITests.swift */; };
+		ADDF903224D8076C006A1399 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF903124D8076C006A1399 /* UserData.swift */; };
+		ADEE743724D80D4C0010C2D8 /* SingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		ADDF901D24D7FE4A006A1399 /* ToDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDF902124D7FE4A006A1399 /* ToDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUITests.swift; sourceTree = "<group>"; };
 		ADDF902324D7FE4A006A1399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADDF903124D8076C006A1399 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,9 @@
 			children = (
 				ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */,
 				ADDF900124D7FE49006A1399 /* SceneDelegate.swift */,
+				ADDF903124D8076C006A1399 /* UserData.swift */,
 				ADDF900324D7FE49006A1399 /* ContentView.swift */,
+				ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */,
 				ADDF900524D7FE4A006A1399 /* Assets.xcassets */,
 				ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */,
 				ADDF900D24D7FE4A006A1399 /* Info.plist */,
@@ -268,6 +274,8 @@
 			files = (
 				ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */,
 				ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */,
+				ADDF903224D8076C006A1399 /* UserData.swift in Sources */,
+				ADEE743724D80D4C0010C2D8 /* SingleCardView.swift in Sources */,
 				ADDF900424D7FE49006A1399 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
