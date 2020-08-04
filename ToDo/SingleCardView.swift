@@ -18,6 +18,15 @@ struct SingleCardView: View {
                 .frame(width: 6)
                 .foregroundColor(.blue)
             
+            //删除按钮
+            Button(action: {
+                
+            }) {
+                Image(systemName: "trash")
+                    .imageScale(.large)
+                    .padding(.leading)
+            }
+            
             //点击已创建事项进行编辑
             Button(action: {
                 showEditingPage = true
@@ -44,7 +53,7 @@ struct SingleCardView: View {
                     .environmentObject(userData)
             })
             
-            Image(systemName: userData.todoList[index].isChecked ? "checkmark.square" : "square")
+            Image(systemName: userData.todoList[index].isChecked ? "record.circle" : "circle")
                 .imageScale(.large)
                 .padding(.trailing)
                 .onTapGesture {

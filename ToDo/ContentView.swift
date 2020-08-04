@@ -7,11 +7,21 @@
 
 import SwiftUI
 
+func initUserData() -> [SingleToDo] {
+    var output: [SingleToDo] = []
+    if let dataStored = UserDefaults.standard.object(forKey: "todoList") as? Data {
+        let data = try! decoder.decode([SingleToDo].self, from: dataStored)
+        for item in data {
+            if !item.deleted {
+                output.append(SingleToDo(id: output.count, title: item.title, duedate: item.duedate, isChecked: item.isChecked))
+            }
+        }
+    }
+    return output
+}
+
 struct ContentView: View {
-    @ObservedObject var userdata: ToDo = ToDo(data: [SingleToDo(title: "Hello World", duedate: Date()),
-                                     SingleToDo(title: "Swift", duedate: Date()),
-                                     SingleToDo(title: "Xcode", duedate: Date())
-    ])
+    @ObservedObject var userdata: ToDo = ToDo(data: initUserData())
     @State var showEditingPage = false
     
     var body: some View {
@@ -20,10 +30,12 @@ struct ContentView: View {
                 ScrollView(.vertical, showsIndicators: true/*显示滚动条*/) {
                     VStack{
                         ForEach(userdata.todoList){ item in
-                            SingleCardView(index: item.id)
-                                .environmentObject(userdata)
-                                .padding(.top)
-                                .padding(.horizontal)
+                            if !item.deleted {
+                                SingleCardView(index: item.id)
+                                    .environmentObject(userdata)
+                                    .padding(.top)
+                                    .padding(.horizontal)
+                            }
                         }
                     }
                 }
