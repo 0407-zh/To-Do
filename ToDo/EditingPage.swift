@@ -19,9 +19,9 @@ struct EditingPage: View {
         NavigationView{
             Form {
                 Section {
-                    TextField("提醒事项", text: $title)
+                    TextField("ToDo", text: $title)
                     DatePicker(selection: $duedate) {
-                        Text("截止时间")
+                        Text("Remind Time")
                     }
                 }
                 Section {
@@ -34,16 +34,16 @@ struct EditingPage: View {
 
                         presentation.wrappedValue.dismiss()
                     }, label: {
-                        Text("确认")
+                        Text("Done")
                     })
                     Button(action: {
                         presentation.wrappedValue.dismiss()
                     }, label: {
-                        Text("取消")
+                        Text("Cancel")
                     })
                 }
             }
-            .navigationTitle("编辑提醒事项")
+            .navigationTitle("Details")
         }
     }
 }
