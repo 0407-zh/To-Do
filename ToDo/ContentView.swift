@@ -23,6 +23,8 @@ func initUserData() -> [SingleToDo] {
 struct ContentView: View {
     @ObservedObject var userdata: ToDo = ToDo(data: initUserData())
     @State var showEditingPage = false
+    @State var selection: [Int] = []
+    @State var editingMode = false
     
     var body: some View {
         ZStack{
@@ -31,15 +33,25 @@ struct ContentView: View {
                     VStack{
                         ForEach(userdata.todoList){ item in
                             if !item.deleted {
-                                SingleCardView(index: item.id)
+                                SingleCardView(editingMode: $editingMode, selection: $selection, index: item.id)
                                     .environmentObject(userdata)
                                     .padding(.top)
                                     .padding(.horizontal)
+                                    .animation(.spring())
+                                    .transition(.slide)
                             }
                         }
                     }
                 }
                 .navigationTitle("ToDo")
+                .navigationBarItems(trailing:
+                                        HStack(spacing: editingMode ? 20 : 0){
+                                            if editingMode {
+                                                DeleteButton(selection: $selection)
+                                                    .environmentObject(userdata)
+                                            }
+                                            EditingButton(editingMode: $editingMode, selection: $selection)
+                                        })
             }
         
             HStack{
@@ -49,7 +61,9 @@ struct ContentView: View {
                     Spacer()
                     
                     Button(action: {
-                        showEditingPage = true
+                        if editingMode {
+                            showEditingPage = false
+                        }
                     }){
                         Image(systemName: "pencil.tip.crop.circle.badge.plus")
                             .resizable()
@@ -69,9 +83,9 @@ struct ContentView: View {
 }
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
+//

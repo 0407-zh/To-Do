@@ -10,6 +10,8 @@ import SwiftUI
 struct SingleCardView: View {
     @EnvironmentObject var userData: ToDo
     @State var showEditingPage: Bool = false
+    @Binding var editingMode: Bool
+    @Binding var selection: [Int]
     var index: Int
     
     var body: some View {
@@ -18,13 +20,15 @@ struct SingleCardView: View {
                 .frame(width: 6)
                 .foregroundColor(.blue)
             
-            //删除按钮
-            Button(action: {
-                
-            }) {
-                Image(systemName: "trash")
-                    .imageScale(.large)
-                    .padding(.leading)
+            if editingMode {
+                //删除按钮
+                Button(action: {
+                    userData.delete(id: index)
+                }) {
+                    Image(systemName: "trash")
+                        .imageScale(.large)
+                        .padding(.leading)
+                }
             }
             
             //点击已创建事项进行编辑
@@ -53,12 +57,28 @@ struct SingleCardView: View {
                     .environmentObject(userData)
             })
             
-            Image(systemName: userData.todoList[index].isChecked ? "record.circle" : "circle")
-                .imageScale(.large)
-                .padding(.trailing)
-                .onTapGesture {
-                    userData.check(id: index)
-                }
+            if !editingMode {
+                Image(systemName: userData.todoList[index].isChecked ? "record.circle" : "circle")
+                    .imageScale(.large)
+                    .padding(.trailing)
+                    .onTapGesture {
+                        userData.check(id: index)
+                    }
+            } else {
+                Image(systemName:  selection.firstIndex(where: { $0 == index
+                    }) == nil ? "circle" : "checkmark.circle.fill")
+                    .imageScale(.large)
+                    .padding(.trailing)
+                    .onTapGesture {
+                        if selection.firstIndex(where: {
+                            $0 == index
+                        }) == nil {
+                            selection.append(index)
+                        } else {
+                            selection.remove(at: selection.firstIndex(where: { $0 == index })!)
+                        }
+                    }
+            }
         }
         .frame(height: 80)
         .background(Color.white)
@@ -68,8 +88,8 @@ struct SingleCardView: View {
 }
 
 
-struct SingleCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        SingleCardView(index: 1)
-    }
-}
+//struct SingleCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SingleCardView(index: 1)
+//    }
+//}
