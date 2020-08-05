@@ -7,18 +7,7 @@
 
 import SwiftUI
 
-func initUserData() -> [SingleToDo] {
-    var output: [SingleToDo] = []
-    if let dataStored = UserDefaults.standard.object(forKey: "todoList") as? Data {
-        let data = try! decoder.decode([SingleToDo].self, from: dataStored)
-        for item in data {
-            if !item.deleted {
-                output.append(SingleToDo(id: output.count, title: item.title, duedate: item.duedate, isChecked: item.isChecked))
-            }
-        }
-    }
-    return output
-}
+//var formatter = DateFormatter()
 
 struct ContentView: View {
     @ObservedObject var userdata: ToDo = ToDo(data: initUserData())
@@ -45,9 +34,9 @@ struct ContentView: View {
                 }
                 .navigationTitle("ToDo")
                 .navigationBarItems(trailing:
-                                        HStack(spacing: editingMode ? 20 : 0){
+                                        HStack(spacing: 10){
                                             if editingMode {
-                                                DeleteButton(selection: $selection)
+                                                DeleteButton(selection: $selection, editingMode: $editingMode)
                                                     .environmentObject(userdata)
                                             }
                                             EditingButton(editingMode: $editingMode, selection: $selection)
@@ -61,8 +50,8 @@ struct ContentView: View {
                     Spacer()
                     
                     Button(action: {
-                        if editingMode {
-                            showEditingPage = false
+                        if !editingMode {
+                            showEditingPage = true
                         }
                     }){
                         Image(systemName: "pencil.tip.crop.circle.badge.plus")
