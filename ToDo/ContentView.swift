@@ -7,19 +7,25 @@
 
 import SwiftUI
 
-//var formatter = DateFormatter()
-
 struct ContentView: View {
     @ObservedObject var userdata: ToDo = ToDo(data: initUserData())
     @State var showEditingPage = false
     @State var selection: [Int] = []
     @State var editingMode = false
+    let date = Date()
     
     var body: some View {
-        ZStack{
+        VStack{
             NavigationView{
                 ScrollView(.vertical, showsIndicators: true/*显示滚动条*/) {
                     VStack{
+                        HStack{
+                            Text(currentDate.string(from: date))
+                                .bold()
+                                .font(.headline)
+                                .padding(.leading)
+                            Spacer()
+                        }
                         ForEach(userdata.todoList){ item in
                             if !item.deleted {
                                 SingleCardView(editingMode: $editingMode, selection: $selection, index: item.id)
@@ -32,7 +38,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .navigationTitle("ToDo")
+                .navigationTitle("To Do")
                 .navigationBarItems(trailing:
                                         HStack(spacing: 10){
                                             if editingMode {
@@ -42,30 +48,27 @@ struct ContentView: View {
                                             EditingButton(editingMode: $editingMode, selection: $selection)
                                         })
             }
-        
+        Spacer()
+            
             HStack{
                 Spacer()
                 
-                VStack{
-                    Spacer()
-                    
-                    Button(action: {
-                        if !editingMode {
-                            showEditingPage = true
-                        }
-                    }){
-                        Image(systemName: "pencil.tip.crop.circle.badge.plus")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 80)
-                            .foregroundColor(.blue)
-                            .padding(.trailing)
+                Button(action: {
+                    if !editingMode {
+                        showEditingPage = true
                     }
-                    .sheet(isPresented: $showEditingPage, content: {
-                        EditingPage()
-                            .environmentObject(userdata)
-                    })
+                }){
+                    Image(systemName: "pencil.tip.crop.circle.badge.plus")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 80)
+                        .foregroundColor(.blue)
+                        .padding(.trailing)
                 }
+                .sheet(isPresented: $showEditingPage, content: {
+                    EditingPage()
+                        .environmentObject(userdata)
+                })
             }
         }
     }

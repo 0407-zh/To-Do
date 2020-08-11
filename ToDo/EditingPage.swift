@@ -11,7 +11,8 @@ struct EditingPage: View {
     @EnvironmentObject var userData: ToDo
     @State var title: String = ""
     @State var duedate: Date = Date()
-    @State var isFavorite: Bool = false
+    @State var isFlagged: Bool = false
+    @State var isRemind: Bool = false
     @Environment(\.presentationMode) var presentation
     
     var id: Int? = nil
@@ -20,17 +21,22 @@ struct EditingPage: View {
         NavigationView{
             Form {
                 Section {
-                    TextField("ToDo", text: $title)
-                    DatePicker(selection: $duedate) {
-                        Text("Remind Time")
+                    TextField("To Do", text: $title)
+                    Toggle(isOn: $isRemind, label: {
+                        Text("Remind me at a time")
+                    })
+                    if isRemind {
+                        DatePicker(selection: $duedate) {
+                            Text("Remind Time")
+                        }
                     }
                 }
                 
                 Section{
-                    Toggle(isOn: $isFavorite) {
+                    Toggle(isOn: $isFlagged) {
                         Text("Flag")
-                        Image(systemName: isFavorite ? "flag.fill" : "flag")
-                            .foregroundColor(.blue)
+                        Image(systemName: isFlagged ? "flag.fill" : "flag")
+                            .foregroundColor(.orange)
                             .imageScale(.medium)
                     }
                 }
@@ -40,7 +46,7 @@ struct EditingPage: View {
                         if id == nil {
                             userData.add(data: SingleToDo(title: title, duedate: duedate))
                         } else {
-                            userData.edit(id: self.id!, data: SingleToDo(/*isFavorite: self.isFavorite*/ title: title, duedate: duedate))
+                            userData.edit(id: self.id!, data: SingleToDo(title: title, duedate: duedate))
                         }
 
                         presentation.wrappedValue.dismiss()

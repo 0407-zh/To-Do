@@ -7,6 +7,7 @@
 
 import Foundation
 import UserNotifications
+import UserNotificationsUI
 
 var encoder = JSONEncoder()//编码器
 var decoder = JSONDecoder()//解码器
@@ -23,18 +24,20 @@ class ToDo: ObservableObject {
     init(data: [SingleToDo]) {
         self.todoList = []
         for item in data {
-            todoList.append(SingleToDo(id: self.count, /*isFavorite: item.isFavorite,*/ title: item.title, duedate: item.duedate, isChecked: item.isChecked))
+            todoList.append(SingleToDo(title: item.title, duedate: item.duedate, isChecked: item.isChecked, id: self.count))
             count += 1
         }
     }
     
     func check(id: Int) {
         todoList[id].isChecked.toggle()
+        
+        dataStore()
     }
     
     //MARK: 添加新提醒事项
     func add(data: SingleToDo) {
-        todoList.append(SingleToDo(id: self.count, /*isFavorite: data.isFavorite,*/ title: data.title, duedate: data.duedate))
+        todoList.append(SingleToDo(title: data.title, duedate: data.duedate, id: self.count))
         count += 1
         
         sort()
@@ -50,7 +53,6 @@ class ToDo: ObservableObject {
         todoList[id].title = data.title
         todoList[id].duedate = data.duedate
         todoList[id].isChecked = false
-//        todoList[id].isFavorite = data.isFavorite
         
         sort()
         
@@ -64,16 +66,26 @@ class ToDo: ObservableObject {
         NotificationContent.title = todoList[id].title
         NotificationContent.sound = UNNotificationSound.default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: todoList[id].duedate.timeIntervalSinceNow, repeats: false)
-        let request = UNNotificationRequest(identifier: todoList[id].title + todoList[id].duedate.description, content: NotificationContent, trigger: trigger)
+        guard let selectedDate = todoList[id].duedate else {
+            return
+        }
+
+        let interval = selectedDate.timeIntervalSinceNow
+
+        guard interval > 0 else {
+            return
+        }
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
+        let request = UNNotificationRequest(identifier: todoList[id].title + todoList[id].duedate!.description, content: NotificationContent, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
     }
     
     //MARK: 撤回通知
     func withdrawNotification(id: Int) {
-        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [todoList[id].title + todoList[id].duedate.description])//仅能撤回已发送的通知
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [todoList[id].title + todoList[id].duedate.description])
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [todoList[id].title + todoList[id].duedate!.description])//仅能撤回已发送的通知
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [todoList[id].title + todoList[id].duedate!.description])
     }
     
     //MARK: 删除提醒事项
@@ -87,7 +99,7 @@ class ToDo: ObservableObject {
     //MARK: 对提醒事项按照时间排序
     func sort() {
         todoList.sort (by: { (data1, data2) in
-            return data1.duedate.timeIntervalSince1970 < data2.duedate.timeIntervalSince1970
+            return data1.duedate!.timeIntervalSince1970 < data2.duedate!.timeIntervalSince1970
         })
         for i in 0..<self.todoList.count {
             todoList[i].id = i
@@ -97,17 +109,22 @@ class ToDo: ObservableObject {
     //MARK: 存储数据
     func dataStore() {
         let dataStored = try! encoder.encode(todoList)
-        UserDefaults.standard.set(dataStored, forKey: "todoList")
+        UserDefaults.standard.set(dataStored, forKey: "todoListData")
+    }
+    
+    //MARK: 震动反馈
+    func vibrationFeedback() {
+        let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
     }
 }
 
 struct SingleToDo: Identifiable, Codable {
-    var id: Int = 0
+    var title: String = ""
+    var duedate: Date? = Date()
+    var isChecked: Bool = false
     
     var deleted: Bool = false
-//    var isFavorite: Bool = false
     
-    var title: String = ""
-    var duedate: Date = Date()
-    var isChecked: Bool = false
+    var id: Int = 0
 }

@@ -7,17 +7,19 @@
 
 import SwiftUI
 
-var formatter = DateFormatter()
+let formatter = DateFormatter()
+let currentDate = DateFormatter()
 
 func initUserData() -> [SingleToDo] {
-    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    formatter.dateFormat = "yyyy-MM-dd HH:mm, EEEE"
+    currentDate.dateFormat = "MMM dd, EEEE"
     
     var output: [SingleToDo] = []
-    if let dataStored = UserDefaults.standard.object(forKey: "todoList") as? Data {
+    if let dataStored = UserDefaults.standard.object(forKey: "todoListData") as? Data {
         let data = try! decoder.decode([SingleToDo].self, from: dataStored)
         for item in data {
             if !item.deleted {
-                output.append(SingleToDo(id: output.count, /*isFavorite: item.isFavorite,*/ title: item.title, duedate: item.duedate, isChecked: item.isChecked))
+                output.append(SingleToDo(title: item.title, duedate: item.duedate, isChecked: item.isChecked, id: output.count))
             }
         }
     }
@@ -35,31 +37,32 @@ struct SingleCardView: View {
         HStack {
             Rectangle()
                 .frame(width: 6)
-                .foregroundColor(Color("Card" + String(index % 5)))//卡片侧边颜色
+                .foregroundColor(Color("Card" + String(index % 6)))//卡片侧边颜色
             
             if editingMode {
                 //删除按钮
                 Button(action: {
                     userData.delete(id: index)
-                    editingMode = false
+//                    editingMode = false
                 }) {
-                    Image(systemName: "trash")
+                    Image(systemName: "minus.circle.fill")
+                        .foregroundColor(.red)
                         .imageScale(.large)
                         .padding(.leading)
                 }
             }
             
-            //点击已创建事项进行编辑
             Button(action: {
-                showEditingPage = true
+                userData.check(id: index)
             }){
                 Group{
                     VStack(alignment: .leading, spacing: 6){
                         Text(userData.todoList[index].title)
                             .font(.headline)
-                            .foregroundColor(.black)
                             .fontWeight(.heavy)
-                        Text(formatter.string(from: userData.todoList[index].duedate))
+                            .strikethrough(userData.todoList[index].isChecked)
+                            .foregroundColor(userData.todoList[index].isChecked ? .secondary : .primary)
+                        Text(formatter.string(from: userData.todoList[index].duedate!))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -68,26 +71,29 @@ struct SingleCardView: View {
                     Spacer()
                 }
             }
-            .sheet(isPresented: $showEditingPage, content: {
-                EditingPage(title: userData.todoList[index].title,
-                            duedate: userData.todoList[index].duedate,
-//                            userData.todoList[index].isFavorite,
-                            id: index)
-                    .environmentObject(userData)
-            })
+            
 
-//            在提醒事项上添加旗标
-//            if userData.todoList[index].isFavorte {
-//                Image(systemName: "flag.fill")
-//                    .foregroundColor(.blue)
-//                    .imageScale(.large)
-//            }
+            if editingMode {
+                Button(action: {
+                    showEditingPage = true
+                }){
+                    Image(systemName: "square.and.pencil")
+                        .imageScale(.large)
+                }
+                .sheet(isPresented: $showEditingPage, content: {
+                    EditingPage(title: userData.todoList[index].title,
+                                duedate: userData.todoList[index].duedate!,
+                                id: index)
+                        .environmentObject(userData)
+                })
+            }
             
             if !editingMode {
-                Image(systemName: userData.todoList[index].isChecked ? "record.circle" : "circle")
+                Image(systemName: userData.todoList[index].isChecked ? "checkmark.square" : "square")
                     .imageScale(.large)
                     .padding(.trailing)
                     .onTapGesture {
+                        userData.vibrationFeedback()
                         userData.check(id: index)
                     }
             } else {
@@ -96,6 +102,7 @@ struct SingleCardView: View {
                     .imageScale(.large)
                     .padding(.trailing)
                     .onTapGesture {
+                        userData.vibrationFeedback()
                         if selection.firstIndex(where: {
                             $0 == index
                         }) == nil {
@@ -107,15 +114,8 @@ struct SingleCardView: View {
             }
         }
         .frame(height: 80)
-        .background(Color.white)
+        .background(Color("SingleCardColor"))
         .cornerRadius(10)
         .shadow(radius: 10, x: 0, y: 10)
     }
 }
-
-
-//struct SingleCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SingleCardView(index: 1)
-//    }
-//}
