@@ -24,7 +24,7 @@ class ToDo: ObservableObject {
     init(data: [SingleToDo]) {
         self.todoList = []
         for item in data {
-            todoList.append(SingleToDo(title: item.title, duedate: item.duedate, isChecked: item.isChecked, id: self.count))
+            todoList.append(SingleToDo(notes: item.notes, title: item.title, duedate: item.duedate, isChecked: item.isChecked, isMarked: item.isMarked, isRemind: item.isRemind, remindTime: item.remindTime, id: self.count))
             count += 1
         }
     }
@@ -37,7 +37,7 @@ class ToDo: ObservableObject {
     
     //MARK: 添加新提醒事项
     func add(data: SingleToDo) {
-        todoList.append(SingleToDo(title: data.title, duedate: data.duedate, id: self.count))
+        todoList.append(SingleToDo(notes: data.notes, title: data.title, duedate: data.duedate, isMarked: data.isMarked, isRemind: data.isRemind, remindTime: data.remindTime, id: self.count))
         count += 1
         
         sort()
@@ -50,9 +50,12 @@ class ToDo: ObservableObject {
     //MARK: 编辑现有提醒事项
     func edit(id: Int, data: SingleToDo) {
         withdrawNotification(id: id)
+//        todoList[id].url = data.url
+        todoList[id].notes = data.notes
         todoList[id].title = data.title
         todoList[id].duedate = data.duedate
         todoList[id].isChecked = false
+        todoList[id].isMarked = data.isMarked
         
         sort()
         
@@ -64,6 +67,7 @@ class ToDo: ObservableObject {
     //MARK: 发送通知
     func sendNotification(id: Int) {
         NotificationContent.title = todoList[id].title
+        NotificationContent.subtitle = todoList[id].notes
         NotificationContent.sound = UNNotificationSound.default
         
         guard let selectedDate = todoList[id].duedate else {
@@ -109,7 +113,7 @@ class ToDo: ObservableObject {
     //MARK: 存储数据
     func dataStore() {
         let dataStored = try! encoder.encode(todoList)
-        UserDefaults.standard.set(dataStored, forKey: "todoListData")
+        UserDefaults.standard.set(dataStored, forKey: "def")
     }
     
     //MARK: 震动反馈
@@ -120,9 +124,14 @@ class ToDo: ObservableObject {
 }
 
 struct SingleToDo: Identifiable, Codable {
+//    var url: String = ""
+    var notes: String = ""
     var title: String = ""
     var duedate: Date? = Date()
     var isChecked: Bool = false
+    var isMarked: Bool = false
+    var isRemind: Bool = false
+    var remindTime: Bool = false
     
     var deleted: Bool = false
     

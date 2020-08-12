@@ -10,6 +10,7 @@
 		AD659BA724DA5419004CF9C8 /* EditingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD659BA624DA5419004CF9C8 /* EditingButton.swift */; };
 		AD659BA924DA5468004CF9C8 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD659BA824DA5468004CF9C8 /* DeleteButton.swift */; };
 		AD659BAB24DA57D1004CF9C8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD659BAA24DA57D1004CF9C8 /* README.md */; };
+		AD6632DC24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6632DB24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift */; };
 		AD67673624D8229700521118 /* EditingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67673524D8229700521118 /* EditingPage.swift */; };
 		ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */; };
 		ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF900124D7FE49006A1399 /* SceneDelegate.swift */; };
@@ -21,10 +22,26 @@
 		ADEE743724D80D4C0010C2D8 /* SingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AD6632F624E3BDB700B985F1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		AD659BA624DA5419004CF9C8 /* EditingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingButton.swift; sourceTree = "<group>"; };
 		AD659BA824DA5468004CF9C8 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		AD659BAA24DA57D1004CF9C8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ToDo/README.md; sourceTree = "<group>"; };
+		AD6632DB24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMarkedOnlyButton.swift; sourceTree = "<group>"; };
+		AD6632E324E3BDB400B985F1 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		AD6632E524E3BDB400B985F1 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		AD67673524D8229700521118 /* EditingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingPage.swift; sourceTree = "<group>"; };
 		ADDF8FFC24D7FE49006A1399 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,11 +66,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD6632E224E3BDB400B985F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD6632E324E3BDB400B985F1 /* WidgetKit.framework */,
+				AD6632E524E3BDB400B985F1 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ADDF8FF324D7FE49006A1399 = {
 			isa = PBXGroup;
 			children = (
 				AD659BAA24DA57D1004CF9C8 /* README.md */,
 				ADDF8FFE24D7FE49006A1399 /* ToDo */,
+				AD6632E224E3BDB400B985F1 /* Frameworks */,
 				ADDF8FFD24D7FE49006A1399 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,6 +104,7 @@
 				AD67673524D8229700521118 /* EditingPage.swift */,
 				AD659BA624DA5419004CF9C8 /* EditingButton.swift */,
 				AD659BA824DA5468004CF9C8 /* DeleteButton.swift */,
+				AD6632DB24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift */,
 				ADDF900524D7FE4A006A1399 /* Assets.xcassets */,
 				ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */,
 				ADDF900D24D7FE4A006A1399 /* Info.plist */,
@@ -103,6 +131,7 @@
 				ADDF8FF824D7FE49006A1399 /* Sources */,
 				ADDF8FF924D7FE49006A1399 /* Frameworks */,
 				ADDF8FFA24D7FE49006A1399 /* Resources */,
+				AD6632F624E3BDB700B985F1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -164,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD6632DC24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift in Sources */,
 				ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */,
 				AD67673624D8229700521118 /* EditingPage.swift in Sources */,
 				ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */,
@@ -308,6 +338,7 @@
 		ADDF902724D7FE4A006A1399 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -329,6 +360,7 @@
 		ADDF902824D7FE4A006A1399 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;

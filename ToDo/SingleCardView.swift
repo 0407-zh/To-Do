@@ -9,17 +9,19 @@ import SwiftUI
 
 let formatter = DateFormatter()
 let currentDate = DateFormatter()
+let scheduledDate = DateFormatter()
 
 func initUserData() -> [SingleToDo] {
     formatter.dateFormat = "yyyy-MM-dd HH:mm, EEEE"
     currentDate.dateFormat = "MMM dd, EEEE"
+    scheduledDate.dateFormat = "yyyy-MM-dd, EEEE"
     
     var output: [SingleToDo] = []
-    if let dataStored = UserDefaults.standard.object(forKey: "todoListData") as? Data {
+    if let dataStored = UserDefaults.standard.object(forKey: "def") as? Data {
         let data = try! decoder.decode([SingleToDo].self, from: dataStored)
         for item in data {
             if !item.deleted {
-                output.append(SingleToDo(title: item.title, duedate: item.duedate, isChecked: item.isChecked, id: output.count))
+                output.append(SingleToDo(notes: item.notes, title: item.title, duedate: item.duedate, isChecked: item.isChecked, isMarked: item.isMarked, isRemind: item.isRemind, remindTime: item.remindTime, id: output.count))
             }
         }
     }
@@ -32,6 +34,7 @@ struct SingleCardView: View {
     @Binding var editingMode: Bool
     @Binding var selection: [Int]
     var index: Int
+    let time = Date()
     
     var body: some View {
         HStack {
@@ -53,16 +56,40 @@ struct SingleCardView: View {
             }
             
             Button(action: {
-                userData.check(id: index)
+                if !editingMode {
+                    userData.vibrationFeedback()
+                    userData.check(id: index)
+                }
             }){
                 Group{
                     VStack(alignment: .leading, spacing: 6){
-                        Text(userData.todoList[index].title)
-                            .font(.headline)
-                            .fontWeight(.heavy)
-                            .strikethrough(userData.todoList[index].isChecked)
-                            .foregroundColor(userData.todoList[index].isChecked ? .secondary : .primary)
-                        Text(formatter.string(from: userData.todoList[index].duedate!))
+                        HStack{
+                            Text(userData.todoList[index].title)
+                                .font(.headline)
+                                .fontWeight(.heavy)
+                                .strikethrough(userData.todoList[index].isChecked)
+                                .foregroundColor(userData.todoList[index].isChecked ? .secondary : .primary)
+                            
+                            if userData.todoList[index].isMarked {
+                                Image(systemName: "bookmark.fill")
+                                    .foregroundColor(.orange)
+                                    .imageScale(.small)
+                            }
+                        }
+                        
+                        if !showEditingPage {
+                            if (userData.todoList[index].remindTime && userData.todoList[index].isRemind) || (userData.todoList[index].remindTime) {
+                                Text(formatter.string(from: userData.todoList[index].duedate!))
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            } else if userData.todoList[index].isRemind {
+                                Text(scheduledDate.string(from: time))
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        
+                        Text(userData.todoList[index].notes)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -72,7 +99,6 @@ struct SingleCardView: View {
                 }
             }
             
-
             if editingMode {
                 Button(action: {
                     showEditingPage = true
@@ -81,8 +107,13 @@ struct SingleCardView: View {
                         .imageScale(.large)
                 }
                 .sheet(isPresented: $showEditingPage, content: {
-                    EditingPage(title: userData.todoList[index].title,
+                    EditingPage(notes: userData.todoList[index].notes,
+                                title: userData.todoList[index].title,
                                 duedate: userData.todoList[index].duedate!,
+                                isMarked: userData.todoList[index].isMarked,
+                                isRemind: userData.todoList[index].isRemind,
+                                remindTime: userData.todoList[index].remindTime,
+                                editingMode: $editingMode,
                                 id: index)
                         .environmentObject(userData)
                 })
@@ -98,7 +129,8 @@ struct SingleCardView: View {
                     }
             } else {
                 Image(systemName:  selection.firstIndex(where: { $0 == index
-                    }) == nil ? "circle" : "checkmark.circle.fill")
+                    }) == nil ? "circle" : "checkmark.circle")
+                    .foregroundColor(.blue)
                     .imageScale(.large)
                     .padding(.trailing)
                     .onTapGesture {

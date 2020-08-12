@@ -9,10 +9,14 @@ import SwiftUI
 
 struct EditingPage: View {
     @EnvironmentObject var userData: ToDo
+//    @State var url: String = ""
+    @State var notes: String = ""
     @State var title: String = ""
     @State var duedate: Date = Date()
-    @State var isFlagged: Bool = false
+    @State var isMarked: Bool = false
     @State var isRemind: Bool = false
+    @State var remindTime: Bool = false
+    @Binding var editingMode: Bool
     @Environment(\.presentationMode) var presentation
     
     var id: Int? = nil
@@ -21,35 +25,63 @@ struct EditingPage: View {
         NavigationView{
             Form {
                 Section {
-                    TextField("To Do", text: $title)
-                    Toggle(isOn: $isRemind, label: {
-                        Text("Remind me at a time")
-                    })
+                    TextField("Title", text: $title)
+                    .keyboardType(.default)
+                        
+                    TextField("Notes", text: $notes)
+                    .keyboardType(.default)
+                }
+                .modifier(DismissingKeyboard())
+                
+                Section {
+                    Toggle(isOn: $isRemind){
+                        Image(systemName: "calendar")
+                            .foregroundColor(.red)
+                            .imageScale(.large)
+                        Text("Date")
+                    }
                     if isRemind {
-                        DatePicker(selection: $duedate) {
-                            Text("Remind Time")
+                        DatePicker(selection: $duedate, displayedComponents: .date){
+                            
+                        }
+                    }
+                    Toggle(isOn: $remindTime){
+                        Image(systemName: "alarm")
+                            .foregroundColor(.blue)
+                            .imageScale(.large)
+                        Text("Time")
+                    }
+                    if remindTime {
+                        DatePicker(selection: $duedate, displayedComponents: .hourAndMinute){
+                            
                         }
                     }
                 }
+                .modifier(DismissingKeyboard())
                 
-                Section{
-                    Toggle(isOn: $isFlagged) {
-                        Text("Flag")
-                        Image(systemName: isFlagged ? "flag.fill" : "flag")
+                Section {
+                    Toggle(isOn: $isMarked) {
+                        Image(systemName: isMarked ? "bookmark.fill" : "bookmark")
                             .foregroundColor(.orange)
                             .imageScale(.medium)
+                        Text("Mark")
                     }
                 }
+                .modifier(DismissingKeyboard())
                 
                 Section {
                     Button(action: {
-                        if id == nil {
-                            userData.add(data: SingleToDo(title: title, duedate: duedate))
+                        if title == "" {
+                            presentation.wrappedValue.dismiss()
+                        } else if id == nil {
+                            userData.add(data: SingleToDo(notes: notes, title: title, duedate: duedate, isMarked: isMarked, isRemind: isRemind, remindTime: remindTime))
                         } else {
-                            userData.edit(id: self.id!, data: SingleToDo(title: title, duedate: duedate))
+                            userData.edit(id: self.id!, data: SingleToDo(notes: notes, title: title, duedate: duedate, isMarked: isMarked, isRemind: isRemind, remindTime: remindTime))
                         }
-
                         presentation.wrappedValue.dismiss()
+                        if editingMode {
+                            editingMode = false
+                        }
                     }, label: {
                         Text("Done")
                     })
@@ -65,8 +97,24 @@ struct EditingPage: View {
     }
 }
 
-struct EditingPage_Previews: PreviewProvider {
-    static var previews: some View {
-        EditingPage()
+//https://stackoverflow.com/a/57877101/13623931
+struct DismissingKeyboard: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .onTapGesture {
+                let keyWindow = UIApplication.shared.connectedScenes
+                        .filter({$0.activationState == .foregroundActive})
+                        .map({$0 as? UIWindowScene})
+                        .compactMap({$0})
+                        .first?.windows
+                        .filter({$0.isKeyWindow}).first
+                keyWindow?.endEditing(true)
+        }
     }
 }
+
+//struct EditingPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditingPage()
+//    }
+//}

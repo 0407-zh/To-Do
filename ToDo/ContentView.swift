@@ -9,17 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var userdata: ToDo = ToDo(data: initUserData())
-    @State var showEditingPage = false
+    @State var showEditingPage: Bool = false
     @State var selection: [Int] = []
-    @State var editingMode = false
+    @State var editingMode: Bool = false
+    @State var showMarkedOnly: Bool = false
     let date = Date()
     
     var body: some View {
         VStack{
             NavigationView{
                 ScrollView(.vertical, showsIndicators: true/*显示滚动条*/) {
-                    VStack{
-                        HStack{
+                    VStack {
+                        HStack {
                             Text(currentDate.string(from: date))
                                 .bold()
                                 .font(.headline)
@@ -28,27 +29,31 @@ struct ContentView: View {
                         }
                         ForEach(userdata.todoList){ item in
                             if !item.deleted {
-                                SingleCardView(editingMode: $editingMode, selection: $selection, index: item.id)
-                                    .environmentObject(userdata)
-                                    .padding(.top)
-                                    .padding(.horizontal)
-                                    .animation(.spring())
-                                    .transition(.slide)
+                                if !showMarkedOnly || item.isMarked {
+                                    SingleCardView(editingMode: $editingMode, selection: $selection, index: item.id)
+                                        .environmentObject(userdata)
+                                        .padding(.top)
+                                        .padding(.horizontal)
+                                        .animation(.spring())
+                                        .transition(.slide)
+                                }
                             }
                         }
                     }
                 }
                 .navigationTitle("To Do")
                 .navigationBarItems(trailing:
-                                        HStack(spacing: 10){
+                                        HStack(spacing: 15){
                                             if editingMode {
                                                 DeleteButton(selection: $selection, editingMode: $editingMode)
                                                     .environmentObject(userdata)
+                                            } else {
+                                                ShowMarkedOnlyButton(showMarkedOnly: $showMarkedOnly)
                                             }
                                             EditingButton(editingMode: $editingMode, selection: $selection)
                                         })
             }
-        Spacer()
+            Spacer()
             
             HStack{
                 Spacer()
@@ -66,7 +71,7 @@ struct ContentView: View {
                         .padding(.trailing)
                 }
                 .sheet(isPresented: $showEditingPage, content: {
-                    EditingPage()
+                    EditingPage(editingMode: $editingMode)
                         .environmentObject(userdata)
                 })
             }
