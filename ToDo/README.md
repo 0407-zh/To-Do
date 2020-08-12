@@ -7,5 +7,5 @@ Use SwiftUI to build a ToDo app
 * iOS 14.0+
 
 ## Known Issues
-* Can't save checked reminders temporarily
-* Edit mode cannot be temporarily disabled in multi-select mode
+*  ~Can't save checked reminders temporarily~
+* ~Edit mode cannot be temporarily disabled in multi-select mode~
