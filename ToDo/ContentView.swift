@@ -41,7 +41,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .navigationTitle("To Do")
+                .navigationTitle("To Do!")
                 .navigationBarItems(trailing:
                                         HStack(spacing: 15){
                                             if editingMode {
