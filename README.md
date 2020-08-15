@@ -9,5 +9,5 @@ Use SwiftUI to build a To Do app
 ## Known Issues
 *  ~Can't save checked reminders temporarily~
 * ~Edit mode cannot be temporarily disabled in multi-select mode~
+* ~Hidden keyboard actions conflict with other interactive actions~
 * The homepage date cannot be refreshed automatically, you need to restart the app to update the date
-* Hidden keyboard actions conflict with other interactive actions
