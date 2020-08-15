@@ -12,9 +12,9 @@ let currentDate = DateFormatter()
 let scheduledDate = DateFormatter()
 
 func initUserData() -> [SingleToDo] {
-    formatter.dateFormat = "yyyy-MM-dd HH:mm, EEEE"
-    currentDate.dateFormat = "MMM dd, EEEE"
-    scheduledDate.dateFormat = "yyyy-MM-dd, EEEE"
+    formatter.dateFormat = "EEEE, yyyy-MM-dd HH:mm"
+    currentDate.dateFormat = "EEEE, MMM dd"
+    scheduledDate.dateFormat = "EEEE, yyyy-MM-dd"
     
     var output: [SingleToDo] = []
     if let dataStored = UserDefaults.standard.object(forKey: "def") as? Data {
