@@ -7,27 +7,6 @@
 
 import SwiftUI
 
-let formatter = DateFormatter()
-let currentDate = DateFormatter()
-let scheduledDate = DateFormatter()
-
-func initUserData() -> [SingleToDo] {
-    formatter.dateFormat = "EEEE, yyyy-MM-dd HH:mm"
-    currentDate.dateFormat = "EEEE, MMM dd"
-    scheduledDate.dateFormat = "EEEE, yyyy-MM-dd"
-    
-    var output: [SingleToDo] = []
-    if let dataStored = UserDefaults.standard.object(forKey: "def") as? Data {
-        let data = try! decoder.decode([SingleToDo].self, from: dataStored)
-        for item in data {
-            if !item.deleted {
-                output.append(SingleToDo(notes: item.notes, title: item.title, duedate: item.duedate, isChecked: item.isChecked, isMarked: item.isMarked, isRemind: item.isRemind, remindTime: item.remindTime, id: output.count))
-            }
-        }
-    }
-    return output
-}
-
 struct SingleCardView: View {
     @EnvironmentObject var userData: ToDo
     @State var showEditingPage: Bool = false

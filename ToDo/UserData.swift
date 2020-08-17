@@ -5,6 +5,7 @@
 //  Created by Derek Chan on 2020/8/3.
 //
 
+import SwiftUI
 import Foundation
 import UserNotifications
 import UserNotificationsUI
@@ -50,11 +51,10 @@ class ToDo: ObservableObject {
     //MARK: 编辑现有提醒事项
     func edit(id: Int, data: SingleToDo) {
         withdrawNotification(id: id)
-//        todoList[id].url = data.url
         todoList[id].notes = data.notes
         todoList[id].title = data.title
         todoList[id].duedate = data.duedate
-        todoList[id].isChecked = false
+        todoList[id].isChecked = data.isChecked
         todoList[id].isMarked = data.isMarked
         
         sort()
@@ -132,8 +132,45 @@ struct SingleToDo: Identifiable, Codable {
     var isMarked: Bool = false
     var isRemind: Bool = false
     var remindTime: Bool = false
-    
     var deleted: Bool = false
     
     var id: Int = 0
 }
+
+let formatter = DateFormatter()
+let currentDate = DateFormatter()
+let scheduledDate = DateFormatter()
+
+func initUserData() -> [SingleToDo] {
+    formatter.dateFormat = "EEEE, yyyy-MM-dd HH:mm"
+    currentDate.dateFormat = "EEEE, MMM dd"
+    scheduledDate.dateFormat = "EEEE, yyyy-MM-dd"
+    
+    var output: [SingleToDo] = []
+    if let dataStored = UserDefaults.standard.object(forKey: "def") as? Data {
+        let data = try! decoder.decode([SingleToDo].self, from: dataStored)
+        for item in data {
+            if !item.deleted {
+                output.append(SingleToDo(notes: item.notes, title: item.title, duedate: item.duedate, isChecked: item.isChecked, isMarked: item.isMarked, isRemind: item.isRemind, remindTime: item.remindTime, id: output.count))
+            }
+        }
+    }
+    return output
+}
+
+//https://stackoverflow.com/a/57877101/13623931
+struct DismissingKeyboard: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .onTapGesture {
+                let keyWindow = UIApplication.shared.connectedScenes
+                        .filter({$0.activationState == .foregroundActive})
+                        .map({$0 as? UIWindowScene})
+                        .compactMap({$0})
+                        .first?.windows
+                        .filter({$0.isKeyWindow}).first
+                keyWindow?.endEditing(true)
+        }
+    }
+}
+

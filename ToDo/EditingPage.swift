@@ -9,7 +9,6 @@ import SwiftUI
 
 struct EditingPage: View {
     @EnvironmentObject var userData: ToDo
-//    @State var url: String = ""
     @State var notes: String = ""
     @State var title: String = ""
     @State var duedate: Date = Date()
@@ -93,22 +92,6 @@ struct EditingPage: View {
                 }
             }
             .navigationTitle("Details")
-        }
-    }
-}
-
-//https://stackoverflow.com/a/57877101/13623931
-struct DismissingKeyboard: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .onTapGesture {
-                let keyWindow = UIApplication.shared.connectedScenes
-                        .filter({$0.activationState == .foregroundActive})
-                        .map({$0 as? UIWindowScene})
-                        .compactMap({$0})
-                        .first?.windows
-                        .filter({$0.isKeyWindow}).first
-                keyWindow?.endEditing(true)
         }
     }
 }

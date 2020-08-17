@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AD659BA724DA5419004CF9C8 /* EditingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD659BA624DA5419004CF9C8 /* EditingButton.swift */; };
-		AD659BA924DA5468004CF9C8 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD659BA824DA5468004CF9C8 /* DeleteButton.swift */; };
-		AD6632DC24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6632DB24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift */; };
 		AD67673624D8229700521118 /* EditingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67673524D8229700521118 /* EditingPage.swift */; };
 		ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */; };
 		ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF900124D7FE49006A1399 /* SceneDelegate.swift */; };
@@ -39,9 +36,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AD659BA624DA5419004CF9C8 /* EditingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingButton.swift; sourceTree = "<group>"; };
-		AD659BA824DA5468004CF9C8 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
-		AD6632DB24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMarkedOnlyButton.swift; sourceTree = "<group>"; };
 		AD6632E324E3BDB400B985F1 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		AD6632E524E3BDB400B985F1 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		AD67673524D8229700521118 /* EditingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingPage.swift; sourceTree = "<group>"; };
@@ -107,9 +101,6 @@
 				ADDF900324D7FE49006A1399 /* ContentView.swift */,
 				ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */,
 				AD67673524D8229700521118 /* EditingPage.swift */,
-				AD659BA624DA5419004CF9C8 /* EditingButton.swift */,
-				AD659BA824DA5468004CF9C8 /* DeleteButton.swift */,
-				AD6632DB24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift */,
 				ADF09BC824E7B38E00C2C629 /* Timepiece */,
 				ADDF900524D7FE4A006A1399 /* Assets.xcassets */,
 				ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */,
@@ -210,16 +201,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADF09BCF24E7B38E00C2C629 /* String+Timepiece.swift in Sources */,
-				AD6632DC24E28DBC00B985F1 /* ShowMarkedOnlyButton.swift in Sources */,
 				ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */,
 				AD67673624D8229700521118 /* EditingPage.swift in Sources */,
 				ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */,
 				ADF09BD024E7B38E00C2C629 /* DateComponents+Timepiece.swift in Sources */,
 				ADDF903224D8076C006A1399 /* UserData.swift in Sources */,
 				ADF09BCD24E7B38E00C2C629 /* Date+Timepiece.swift in Sources */,
-				AD659BA924DA5468004CF9C8 /* DeleteButton.swift in Sources */,
 				ADEE743724D80D4C0010C2D8 /* SingleCardView.swift in Sources */,
-				AD659BA724DA5419004CF9C8 /* EditingButton.swift in Sources */,
 				ADF09BCE24E7B38E00C2C629 /* Int+Timepiece.swift in Sources */,
 				ADDF900424D7FE49006A1399 /* ContentView.swift in Sources */,
 			);
