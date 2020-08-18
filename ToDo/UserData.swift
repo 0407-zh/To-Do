@@ -88,8 +88,8 @@ class ToDo: ObservableObject {
     
     //MARK: 撤回通知
     func withdrawNotification(id: Int) {
-        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [todoList[id].title + todoList[id].duedate!.description])//仅能撤回已发送的通知
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [todoList[id].title + todoList[id].duedate!.description])
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [todoList[id].title + todoList[id].notes + todoList[id].duedate!.description])//仅能撤回已发送的通知
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [todoList[id].title + todoList[id].notes + todoList[id].duedate!.description])
     }
     
     //MARK: 删除提醒事项
