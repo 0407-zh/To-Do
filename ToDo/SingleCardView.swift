@@ -25,7 +25,7 @@ struct SingleCardView: View {
                 //删除按钮
                 Button(action: {
                     userData.delete(id: index)
-//                    editingMode = false
+                    editingMode = false
                 }) {
                     Image(systemName: "minus.circle.fill")
                         .foregroundColor(.red)

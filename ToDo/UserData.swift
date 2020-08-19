@@ -10,8 +10,8 @@ import Foundation
 import UserNotifications
 import UserNotificationsUI
 
-var encoder = JSONEncoder()//编码器
-var decoder = JSONDecoder()//解码器
+var encoder = JSONEncoder()
+var decoder = JSONDecoder()
 
 let NotificationContent = UNMutableNotificationContent()
 

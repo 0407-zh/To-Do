@@ -24,10 +24,10 @@ struct EditingPage: View {
         NavigationView{
             Form {
                 Section {
-                    TextField("Title", text: $title)
+                    TextField(LocalizedStringKey("Title"), text: $title)
                     .keyboardType(.default)
                         
-                    TextField("Notes", text: $notes)
+                    TextField(LocalizedStringKey("Notes"), text: $notes)
                     .keyboardType(.default)
                 }
                 .modifier(DismissingKeyboard())
@@ -37,23 +37,21 @@ struct EditingPage: View {
                         Image(systemName: "calendar")
                             .foregroundColor(.red)
                             .imageScale(.large)
-                        Text("Date")
+                        Text(LocalizedStringKey("Date"))
                     }
                     if isRemind {
-                        DatePicker(selection: $duedate, displayedComponents: .date){
-                            
-                        }
+                        DatePicker(LocalizedStringKey(""), selection: $duedate, displayedComponents: .date)
+                        .datePickerStyle(WheelDatePickerStyle())
                     }
                     Toggle(isOn: $remindTime){
                         Image(systemName: "alarm")
                             .foregroundColor(.blue)
                             .imageScale(.large)
-                        Text("Time")
+                        Text(LocalizedStringKey("Time"))
                     }
                     if remindTime {
-                        DatePicker(selection: $duedate, displayedComponents: .hourAndMinute){
-                            
-                        }
+                        DatePicker(LocalizedStringKey(""), selection: $duedate, displayedComponents: .hourAndMinute)
+                            .datePickerStyle(WheelDatePickerStyle())
                     }
                 }
                 .modifier(DismissingKeyboard())
@@ -63,7 +61,7 @@ struct EditingPage: View {
                         Image(systemName: isMarked ? "bookmark.fill" : "bookmark")
                             .foregroundColor(.orange)
                             .imageScale(.medium)
-                        Text("Mark")
+                        Text(LocalizedStringKey("Mark"))
                     }
                 }
                 .modifier(DismissingKeyboard())
@@ -82,16 +80,16 @@ struct EditingPage: View {
                             editingMode = false
                         }
                     }, label: {
-                        Text("Done")
+                        Text(LocalizedStringKey("Done"))
                     })
                     Button(action: {
                         presentation.wrappedValue.dismiss()
                     }, label: {
-                        Text("Cancel")
+                        Text(LocalizedStringKey("Cancel"))
                     })
                 }
             }
-            .navigationTitle("Details")
+            .navigationBarTitle(Text(LocalizedStringKey("Details")))
         }
     }
 }
