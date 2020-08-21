@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  ToDo
+
+  Created by Derek Chan on 2020/8/21.
+  
+*/
+"Title"   = "标题";
+"Notes"   = "备注";
+"Date"    = "日期";
+"Time"    = "时间";
+"Mark"    = "标记";
+"Done"    = "完成";
+"Cancel"  = "取消";
+"Details" = "详情";

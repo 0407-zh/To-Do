@@ -33,6 +33,13 @@ class ToDo: ObservableObject {
     func check(id: Int) {
         todoList[id].isChecked.toggle()
         
+        // 需要再次删除或者添加通知
+        if todoList[id].isChecked {
+            withdrawNotification(id: id)
+        } else {
+            sendNotification(id: id)
+        }
+        
         dataStore()
     }
     
@@ -88,8 +95,9 @@ class ToDo: ObservableObject {
     
     //MARK: 撤回通知
     func withdrawNotification(id: Int) {
-        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [todoList[id].title + todoList[id].notes + todoList[id].duedate!.description])//仅能撤回已发送的通知
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [todoList[id].title + todoList[id].notes + todoList[id].duedate!.description])
+        // 移除通知，identifiers需要与添加通知时相同
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [todoList[id].title + todoList[id].duedate!.description])//仅能撤回已发送的通知
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [todoList[id].title + todoList[id].duedate!.description])
     }
     
     //MARK: 删除提醒事项

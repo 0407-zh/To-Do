@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AD67673624D8229700521118 /* EditingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67673524D8229700521118 /* EditingPage.swift */; };
-		ADCF17F924ED5AFB00A4452A /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADCF17FB24ED5AFB00A4452A /* Localization.strings */; };
+		ADBF102224EFDEB000036398 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADBF102424EFDEB000036398 /* Localizable.strings */; };
 		ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */; };
 		ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF900124D7FE49006A1399 /* SceneDelegate.swift */; };
 		ADDF900424D7FE49006A1399 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF900324D7FE49006A1399 /* ContentView.swift */; };
@@ -40,9 +40,11 @@
 		AD6632E324E3BDB400B985F1 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		AD6632E524E3BDB400B985F1 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		AD67673524D8229700521118 /* EditingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingPage.swift; sourceTree = "<group>"; };
-		ADCF17FA24ED5AFB00A4452A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
-		ADCF17FC24ED5B6500A4452A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localization.strings"; sourceTree = "<group>"; };
-		ADCF17FD24ED602300A4452A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localization.strings"; sourceTree = "<group>"; };
+		ADBF102324EFDEB000036398 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ADBF102524EFE03D00036398 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ADBF102624EFE05700036398 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ADBF102724EFE06F00036398 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ADBF102824EFE08700036398 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADDF8FFC24D7FE49006A1399 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADDF900124D7FE49006A1399 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +107,7 @@
 				ADDF900324D7FE49006A1399 /* ContentView.swift */,
 				ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */,
 				AD67673524D8229700521118 /* EditingPage.swift */,
-				ADCF17FB24ED5AFB00A4452A /* Localization.strings */,
+				ADBF102424EFDEB000036398 /* Localizable.strings */,
 				ADF09BC824E7B38E00C2C629 /* Timepiece */,
 				ADDF900524D7FE4A006A1399 /* Assets.xcassets */,
 				ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */,
@@ -178,6 +180,8 @@
 				Base,
 				"zh-Hant",
 				"zh-Hans",
+				ja,
+				ko,
 			);
 			mainGroup = ADDF8FF324D7FE49006A1399;
 			productRefGroup = ADDF8FFD24D7FE49006A1399 /* Products */;
@@ -195,7 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADDF900C24D7FE4A006A1399 /* LaunchScreen.storyboard in Resources */,
-				ADCF17F924ED5AFB00A4452A /* Localization.strings in Resources */,
+				ADBF102224EFDEB000036398 /* Localizable.strings in Resources */,
 				ADDF900924D7FE4A006A1399 /* Preview Assets.xcassets in Resources */,
 				ADDF900624D7FE4A006A1399 /* Assets.xcassets in Resources */,
 			);
@@ -224,14 +228,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ADCF17FB24ED5AFB00A4452A /* Localization.strings */ = {
+		ADBF102424EFDEB000036398 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ADCF17FA24ED5AFB00A4452A /* en */,
-				ADCF17FC24ED5B6500A4452A /* zh-Hant */,
-				ADCF17FD24ED602300A4452A /* zh-Hans */,
+				ADBF102324EFDEB000036398 /* en */,
+				ADBF102524EFE03D00036398 /* zh-Hant */,
+				ADBF102624EFE05700036398 /* zh-Hans */,
+				ADBF102724EFE06F00036398 /* ja */,
+				ADBF102824EFE08700036398 /* ko */,
 			);
-			name = Localization.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */ = {
