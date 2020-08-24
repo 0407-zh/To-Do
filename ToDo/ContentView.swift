@@ -13,7 +13,11 @@ struct ContentView: View {
     @State var selection: [Int] = []
     @State var editingMode: Bool = false
     @State var showMarkedOnly: Bool = false
-    let date = Date()
+    @State var dateStr: String = ""
+    @State var date = Date()
+    
+    // 定时器，每秒触发一次
+    let timer = Timer.publish(every: 3600 * 24, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack{
@@ -25,6 +29,12 @@ struct ContentView: View {
                                 .bold()
                                 .font(.headline)
                                 .padding(.leading)
+                                .onReceive(timer) { _ in
+                                    // 定时器出发，这里会执行
+                                    // 在这里更新日期
+                                    // 现在每次加一天，只是为了方便看到效果
+                                    date = Date(timeInterval: 3600 * 24, since: date)
+                                }
                             Spacer()
                         }
                         ForEach(userdata.todoList){ item in
@@ -120,12 +130,19 @@ struct ShowMarkedOnlyButton: View {
             showMarkedOnly.toggle()
         }){
             Image(systemName: showMarkedOnly ? "bookmark.fill" : "bookmark")
-                .foregroundColor(.orange)
+                .foregroundColor(Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)))
                 .imageScale(.large)
         }
     }
 }
 
+extension Date {
+    func relativeTime(in locale: Locale = .current) -> String {
+        let homepageFormatter = RelativeDateTimeFormatter()
+        homepageFormatter.calendar = .current
+        return homepageFormatter.localizedString(for: self, relativeTo: Date())
+    }
+}
 
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {

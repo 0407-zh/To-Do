@@ -151,7 +151,7 @@ let scheduledDate = DateFormatter()
 
 func initUserData() -> [SingleToDo] {
     formatter.dateFormat = "EEEE, yyyy-MM-dd HH:mm"
-    currentDate.dateFormat = "EEEE, MMM dd"
+    currentDate.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEEE, MMMd", options: 0, locale: currentDate.locale) // 用日期模版
     scheduledDate.dateFormat = "EEEE, yyyy-MM-dd"
     
     var output: [SingleToDo] = []
