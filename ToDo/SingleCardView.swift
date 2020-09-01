@@ -12,6 +12,7 @@ struct SingleCardView: View {
     @State var showEditingPage: Bool = false
     @Binding var editingMode: Bool
     @Binding var selection: [Int]
+//    @Binding var color: Color
     var index: Int
     let time = Date()
     
@@ -25,7 +26,7 @@ struct SingleCardView: View {
                 //删除按钮
                 Button(action: {
                     userData.delete(id: index)
-                    editingMode = false
+//                    editingMode = false
                 }) {
                     Image(systemName: "minus.circle.fill")
                         .foregroundColor(.red)

@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		AD67673624D8229700521118 /* EditingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67673524D8229700521118 /* EditingPage.swift */; };
 		ADBF102224EFDEB000036398 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADBF102424EFDEB000036398 /* Localizable.strings */; };
+		ADD9D46124FDE57D00FE016D /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = ADD9D46024FDE57D00FE016D /* PureSwiftUI */; };
+		ADD9D46324FDE5BD00FE016D /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9D46224FDE5BD00FE016D /* SelectButton.swift */; };
+		ADD9D46524FDF04600FE016D /* LikeButon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9D46424FDF04600FE016D /* LikeButon.swift */; };
 		ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */; };
 		ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF900124D7FE49006A1399 /* SceneDelegate.swift */; };
 		ADDF900424D7FE49006A1399 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF900324D7FE49006A1399 /* ContentView.swift */; };
@@ -17,10 +20,6 @@
 		ADDF900C24D7FE4A006A1399 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */; };
 		ADDF903224D8076C006A1399 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF903124D8076C006A1399 /* UserData.swift */; };
 		ADEE743724D80D4C0010C2D8 /* SingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */; };
-		ADF09BCD24E7B38E00C2C629 /* Date+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF09BC924E7B38E00C2C629 /* Date+Timepiece.swift */; };
-		ADF09BCE24E7B38E00C2C629 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF09BCA24E7B38E00C2C629 /* Int+Timepiece.swift */; };
-		ADF09BCF24E7B38E00C2C629 /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF09BCB24E7B38E00C2C629 /* String+Timepiece.swift */; };
-		ADF09BD024E7B38E00C2C629 /* DateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF09BCC24E7B38E00C2C629 /* DateComponents+Timepiece.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +49,8 @@
 		ADBF102B24EFE32400036398 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADBF102C24EFF7B800036398 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADBF102D24EFF82100036398 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ADD9D46224FDE5BD00FE016D /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
+		ADD9D46424FDF04600FE016D /* LikeButon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButon.swift; sourceTree = "<group>"; };
 		ADDF8FFC24D7FE49006A1399 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADDF900124D7FE49006A1399 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,10 +61,6 @@
 		ADDF900D24D7FE4A006A1399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADDF903124D8076C006A1399 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCardView.swift; sourceTree = "<group>"; };
-		ADF09BC924E7B38E00C2C629 /* Date+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Timepiece.swift"; sourceTree = "<group>"; };
-		ADF09BCA24E7B38E00C2C629 /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
-		ADF09BCB24E7B38E00C2C629 /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
-		ADF09BCC24E7B38E00C2C629 /* DateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateComponents+Timepiece.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADD9D46124FDE57D00FE016D /* PureSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,8 +110,9 @@
 				ADDF900324D7FE49006A1399 /* ContentView.swift */,
 				ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */,
 				AD67673524D8229700521118 /* EditingPage.swift */,
+				ADD9D46224FDE5BD00FE016D /* SelectButton.swift */,
+				ADD9D46424FDF04600FE016D /* LikeButon.swift */,
 				ADBF102424EFDEB000036398 /* Localizable.strings */,
-				ADF09BC824E7B38E00C2C629 /* Timepiece */,
 				ADDF900524D7FE4A006A1399 /* Assets.xcassets */,
 				ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */,
 				ADDF900D24D7FE4A006A1399 /* Info.plist */,
@@ -128,17 +127,6 @@
 				ADDF900824D7FE4A006A1399 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		ADF09BC824E7B38E00C2C629 /* Timepiece */ = {
-			isa = PBXGroup;
-			children = (
-				ADF09BC924E7B38E00C2C629 /* Date+Timepiece.swift */,
-				ADF09BCA24E7B38E00C2C629 /* Int+Timepiece.swift */,
-				ADF09BCB24E7B38E00C2C629 /* String+Timepiece.swift */,
-				ADF09BCC24E7B38E00C2C629 /* DateComponents+Timepiece.swift */,
-			);
-			path = Timepiece;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +146,9 @@
 			dependencies = (
 			);
 			name = ToDo;
+			packageProductDependencies = (
+				ADD9D46024FDE57D00FE016D /* PureSwiftUI */,
+			);
 			productName = ToDo;
 			productReference = ADDF8FFC24D7FE49006A1399 /* ToDo.app */;
 			productType = "com.apple.product-type.application";
@@ -194,6 +185,9 @@
 				"pt-PT",
 			);
 			mainGroup = ADDF8FF324D7FE49006A1399;
+			packageReferences = (
+				ADD9D45F24FDE57D00FE016D /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
+			);
 			productRefGroup = ADDF8FFD24D7FE49006A1399 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -222,16 +216,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADF09BCF24E7B38E00C2C629 /* String+Timepiece.swift in Sources */,
 				ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */,
 				AD67673624D8229700521118 /* EditingPage.swift in Sources */,
 				ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */,
-				ADF09BD024E7B38E00C2C629 /* DateComponents+Timepiece.swift in Sources */,
 				ADDF903224D8076C006A1399 /* UserData.swift in Sources */,
-				ADF09BCD24E7B38E00C2C629 /* Date+Timepiece.swift in Sources */,
 				ADEE743724D80D4C0010C2D8 /* SingleCardView.swift in Sources */,
-				ADF09BCE24E7B38E00C2C629 /* Int+Timepiece.swift in Sources */,
+				ADD9D46324FDE5BD00FE016D /* SelectButton.swift in Sources */,
 				ADDF900424D7FE49006A1399 /* ContentView.swift in Sources */,
+				ADD9D46524FDF04600FE016D /* LikeButon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +443,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ADD9D45F24FDE57D00FE016D /* XCRemoteSwiftPackageReference "pure-swift-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CodeSlicing/pure-swift-ui.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ADD9D46024FDE57D00FE016D /* PureSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADD9D45F24FDE57D00FE016D /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
+			productName = PureSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ADDF8FF424D7FE49006A1399 /* Project object */;
 }

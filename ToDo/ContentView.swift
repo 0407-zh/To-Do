@@ -20,7 +20,7 @@ struct ContentView: View {
     let timer = Timer.publish(every: 3600 * 24, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        VStack{
+        ZStack{
             NavigationView{
                 ScrollView(.vertical, showsIndicators: true/*显示滚动条*/) {
                     VStack {
@@ -57,49 +57,40 @@ struct ContentView: View {
                                             if editingMode {
                                                 DeleteButton(selection: $selection, editingMode: $editingMode)
                                                     .environmentObject(userdata)
+                                                    .animation(.spring())
+                                                    .transition(.opacity)
                                             } else {
                                                 ShowMarkedOnlyButton(showMarkedOnly: $showMarkedOnly)
+                                                    .animation(.spring())
+                                                    .transition(.opacity)
                                             }
-                                            EditingButton(editingMode: $editingMode, selection: $selection)
+                                            SelectButton(editingMode: $editingMode, selection: $selection)
                                         })
             }
-            Spacer()
-            
-            HStack{
+            VStack{
                 Spacer()
                 
-                Button(action: {
-                    if !editingMode {
-                        showEditingPage = true
+                HStack{
+                    Spacer()
+                    
+                    Button(action: {
+                        if !editingMode {
+                            showEditingPage = true
+                        }
+                    }){
+                        Image(systemName: "pencil.tip.crop.circle.badge.plus")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 80)
+                            .foregroundColor(.blue)
+                            .padding(.trailing)
                     }
-                }){
-                    Image(systemName: "pencil.tip.crop.circle.badge.plus")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80)
-                        .foregroundColor(.blue)
-                        .padding(.trailing)
+                    .sheet(isPresented: $showEditingPage, content: {
+                        EditingPage(editingMode: $editingMode)
+                            .environmentObject(userdata)
+                    })
                 }
-                .sheet(isPresented: $showEditingPage, content: {
-                    EditingPage(editingMode: $editingMode)
-                        .environmentObject(userdata)
-                })
             }
-        }
-    }
-}
-
-struct EditingButton: View {
-    @Binding var editingMode: Bool
-    @Binding var selection: [Int]
-    
-    var body: some View {
-        Button(action: {
-            editingMode.toggle()
-            selection.removeAll()
-        }){
-            Image(systemName: "slider.horizontal.3")
-                .imageScale(.large)
         }
     }
 }
@@ -114,7 +105,7 @@ struct DeleteButton: View {
             for i in selection {
                 userdata.delete(id: i)
             }
-            editingMode = false
+//            editingMode = false
         }){
             Image(systemName: "trash")
                 .imageScale(.large)

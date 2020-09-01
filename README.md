@@ -13,5 +13,6 @@ Use SwiftUI to build a To Do app
 * ~Tick ​​the completed item before the set time, and the notification will still be sent~
 * ~The homepage date cannot be refreshed automatically, you need to restart the app to update the date~
 
+## Screenshot
 ![images](https://github.com/OrangeFlavoredDerek/To-Do/blob/main/Images/IMG_4315.JPEG)
 ![images](https://github.com/OrangeFlavoredDerek/To-Do/blob/main/Images/IMG_4316.JPEG)
