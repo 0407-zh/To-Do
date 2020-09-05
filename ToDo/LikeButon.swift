@@ -40,7 +40,7 @@ struct LikeButton: View {
                 .frame(width: 50, height: 50)
                 .foregroundColor(color)
                 .mask(
-                    Image(systemName: "bookmark.fill")
+                    Image(systemName: "bookmark")
                         .resizable()
                 )
                 .scaleEffect(self.imageScale)

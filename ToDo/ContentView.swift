@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var showMarkedOnly: Bool = false
     @State var dateStr: String = ""
     @State var date = Date()
+    @State var animate: Bool = false
     
     // 定时器，每秒触发一次
     let timer = Timer.publish(every: 3600 * 24, on: .main, in: .common).autoconnect()
@@ -30,9 +31,6 @@ struct ContentView: View {
                                 .font(.headline)
                                 .padding(.leading)
                                 .onReceive(timer) { _ in
-                                    // 定时器出发，这里会执行
-                                    // 在这里更新日期
-                                    // 现在每次加一天，只是为了方便看到效果
                                     date = Date(timeInterval: 3600 * 24, since: date)
                                 }
                             Spacer()
@@ -40,7 +38,7 @@ struct ContentView: View {
                         ForEach(userdata.todoList){ item in
                             if !item.deleted {
                                 if !showMarkedOnly || item.isMarked {
-                                    SingleCardView(editingMode: $editingMode, selection: $selection, index: item.id)
+                                    SingleCardView(editingMode: $editingMode, selection: $selection, animate: $animate, index: item.id)
                                         .environmentObject(userdata)
                                         .padding(.top)
                                         .padding(.horizontal)
@@ -64,9 +62,10 @@ struct ContentView: View {
                                                     .animation(.spring())
                                                     .transition(.opacity)
                                             }
-                                            SelectButton(editingMode: $editingMode, selection: $selection)
+                                            EditButton(editingMode: $editingMode, selection: $selection)
                                         })
             }
+            
             VStack{
                 Spacer()
                 
@@ -105,7 +104,7 @@ struct DeleteButton: View {
             for i in selection {
                 userdata.delete(id: i)
             }
-//            editingMode = false
+            //            editingMode = false
         }){
             Image(systemName: "trash")
                 .imageScale(.large)

@@ -12,6 +12,7 @@ struct SingleCardView: View {
     @State var showEditingPage: Bool = false
     @Binding var editingMode: Bool
     @Binding var selection: [Int]
+    @Binding var animate: Bool
 //    @Binding var color: Color
     var index: Int
     let time = Date()

@@ -10,7 +10,7 @@
 		AD67673624D8229700521118 /* EditingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67673524D8229700521118 /* EditingPage.swift */; };
 		ADBF102224EFDEB000036398 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADBF102424EFDEB000036398 /* Localizable.strings */; };
 		ADD9D46124FDE57D00FE016D /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = ADD9D46024FDE57D00FE016D /* PureSwiftUI */; };
-		ADD9D46324FDE5BD00FE016D /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9D46224FDE5BD00FE016D /* SelectButton.swift */; };
+		ADD9D46324FDE5BD00FE016D /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9D46224FDE5BD00FE016D /* EditButton.swift */; };
 		ADD9D46524FDF04600FE016D /* LikeButon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9D46424FDF04600FE016D /* LikeButon.swift */; };
 		ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */; };
 		ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF900124D7FE49006A1399 /* SceneDelegate.swift */; };
@@ -49,7 +49,7 @@
 		ADBF102B24EFE32400036398 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADBF102C24EFF7B800036398 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADBF102D24EFF82100036398 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		ADD9D46224FDE5BD00FE016D /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
+		ADD9D46224FDE5BD00FE016D /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
 		ADD9D46424FDF04600FE016D /* LikeButon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButon.swift; sourceTree = "<group>"; };
 		ADDF8FFC24D7FE49006A1399 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 				ADDF900324D7FE49006A1399 /* ContentView.swift */,
 				ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */,
 				AD67673524D8229700521118 /* EditingPage.swift */,
-				ADD9D46224FDE5BD00FE016D /* SelectButton.swift */,
+				ADD9D46224FDE5BD00FE016D /* EditButton.swift */,
 				ADD9D46424FDF04600FE016D /* LikeButon.swift */,
 				ADBF102424EFDEB000036398 /* Localizable.strings */,
 				ADDF900524D7FE4A006A1399 /* Assets.xcassets */,
@@ -221,7 +221,7 @@
 				ADDF900224D7FE49006A1399 /* SceneDelegate.swift in Sources */,
 				ADDF903224D8076C006A1399 /* UserData.swift in Sources */,
 				ADEE743724D80D4C0010C2D8 /* SingleCardView.swift in Sources */,
-				ADD9D46324FDE5BD00FE016D /* SelectButton.swift in Sources */,
+				ADD9D46324FDE5BD00FE016D /* EditButton.swift in Sources */,
 				ADDF900424D7FE49006A1399 /* ContentView.swift in Sources */,
 				ADD9D46524FDF04600FE016D /* LikeButon.swift in Sources */,
 			);

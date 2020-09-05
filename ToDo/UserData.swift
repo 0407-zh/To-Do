@@ -44,7 +44,7 @@ class ToDo: ObservableObject {
         dataStore()
     }
     
-    //MARK: 添加新提醒事项
+    //MARK: - 添加
     func add(data: SingleToDo) {
         todoList.append(SingleToDo(notes: data.notes, title: data.title, duedate: data.duedate, isMarked: data.isMarked, isRemind: data.isRemind, remindTime: data.remindTime, id: self.count))
         count += 1
@@ -56,7 +56,7 @@ class ToDo: ObservableObject {
         sendNotification(id: todoList.count - 1)
     }
     
-    //MARK: 编辑现有提醒事项
+    //MARK: - 编辑
     func edit(id: Int, data: SingleToDo) {
         withdrawNotification(id: id)
         todoList[id].notes = data.notes
@@ -72,7 +72,7 @@ class ToDo: ObservableObject {
         sendNotification(id: id)
     }
     
-    //MARK: 发送通知
+    //MARK: - 发送通知
     func sendNotification(id: Int) {
         NotificationContent.title = todoList[id].title
         NotificationContent.subtitle = todoList[id].notes
@@ -94,14 +94,14 @@ class ToDo: ObservableObject {
         UNUserNotificationCenter.current().add(request)
     }
     
-    //MARK: 撤回通知
+    //MARK: - 撤回通知
     func withdrawNotification(id: Int) {
         // 移除通知，identifiers需要与添加通知时相同
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [todoList[id].title + todoList[id].duedate!.description])//仅能撤回已发送的通知
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [todoList[id].title + todoList[id].duedate!.description])
     }
     
-    //MARK: 删除提醒事项
+    //MARK: - 删除提醒事项
     func delete(id: Int) {
         withdrawNotification(id: id)
         todoList[id].deleted = true
@@ -109,7 +109,7 @@ class ToDo: ObservableObject {
         dataStore()
     }
     
-    //MARK: 对提醒事项按照时间排序
+    //MARK: - 按照时间排序
     func sort() {
         todoList.sort (by: { (data1, data2) in
             return data1.duedate!.timeIntervalSince1970 < data2.duedate!.timeIntervalSince1970
@@ -119,13 +119,13 @@ class ToDo: ObservableObject {
         }
     }
     
-    //MARK: 存储数据
+    //MARK: - 存储数据
     func dataStore() {
         let dataStored = try! encoder.encode(todoList)
         UserDefaults.standard.set(dataStored, forKey: "def")
     }
     
-    //MARK: 震动反馈
+    //MARK: - 震动反馈
     func vibrationFeedback() {
         let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)

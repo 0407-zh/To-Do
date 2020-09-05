@@ -8,8 +8,8 @@
 import SwiftUI
 import PureSwiftUI
 
-struct SelectButton: View {
-    @State private var animate = false
+struct EditButton: View {
+    @State var animate = false
     @State private var rotation: Double = 0
     @State private var trim: CGFloat = 0
     @Binding var editingMode: Bool
@@ -20,27 +20,27 @@ struct SelectButton: View {
             Circle()
                 .foregroundColor(Color("ButtonColor"))
             ZStack {
-                Circle()
-                    .trim(from: 0, to: trim)
-                    .stroke(lineWidth: 2)
-                    .rotate(.degrees(rotation - 90.0))
+//                Circle()
+//                    .trim(from: 0, to: trim)
+//                    .stroke(lineWidth: 2)
+//                    .rotate(.degrees(rotation - 90.0))
                 Menu(animate: animate)
                     .stroke(Color.blue, style: StrokeStyle(lineWidth: 3, lineCap: .round))
-                    .frame(10)
+                    .frame(15)
             }
             .rotate(.degrees(rotation))
         }
         .frame(25)
         .onTapGesture {
             withAnimation(Animation.linear(duration: 0.5)) {
-                if self.animate {
-                    self.rotation = 0
-                    self.trim = 0
+                if animate {
+                    rotation = 0
+                    trim = 0
                 } else {
-                    self.rotation = 180
-                    self.trim = 1
+                    rotation = 180
+                    trim = 1
                 }
-                self.animate.toggle()
+                animate.toggle()
             }
             editingMode.toggle()
             selection.removeAll()
