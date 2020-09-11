@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		AD67673624D8229700521118 /* EditingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67673524D8229700521118 /* EditingPage.swift */; };
 		ADBF102224EFDEB000036398 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADBF102424EFDEB000036398 /* Localizable.strings */; };
-		ADD9D46124FDE57D00FE016D /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = ADD9D46024FDE57D00FE016D /* PureSwiftUI */; };
 		ADD9D46324FDE5BD00FE016D /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9D46224FDE5BD00FE016D /* EditButton.swift */; };
 		ADD9D46524FDF04600FE016D /* LikeButon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9D46424FDF04600FE016D /* LikeButon.swift */; };
 		ADDF900024D7FE49006A1399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDF8FFF24D7FE49006A1399 /* AppDelegate.swift */; };
@@ -68,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADD9D46124FDE57D00FE016D /* PureSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +145,6 @@
 			);
 			name = ToDo;
 			packageProductDependencies = (
-				ADD9D46024FDE57D00FE016D /* PureSwiftUI */,
 			);
 			productName = ToDo;
 			productReference = ADDF8FFC24D7FE49006A1399 /* ToDo.app */;
@@ -186,7 +183,6 @@
 			);
 			mainGroup = ADDF8FF324D7FE49006A1399;
 			packageReferences = (
-				ADD9D45F24FDE57D00FE016D /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
 			);
 			productRefGroup = ADDF8FFD24D7FE49006A1399 /* Products */;
 			projectDirPath = "";
@@ -443,25 +439,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		ADD9D45F24FDE57D00FE016D /* XCRemoteSwiftPackageReference "pure-swift-ui" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/CodeSlicing/pure-swift-ui.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.15.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		ADD9D46024FDE57D00FE016D /* PureSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ADD9D45F24FDE57D00FE016D /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
-			productName = PureSwiftUI;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ADDF8FF424D7FE49006A1399 /* Project object */;
 }

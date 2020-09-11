@@ -17,8 +17,7 @@ struct EditingPage: View {
     @State var remindTime: Bool = false
     @Binding var editingMode: Bool
     @State var selectColorIndex: Int = 0
-    @State var bgColor =
-            Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
+    @State var color: Color = Color.blue
     @Environment(\.presentationMode) var presentation
     
     var id: Int? = nil
@@ -60,6 +59,7 @@ struct EditingPage: View {
                 .modifier(DismissingKeyboard())
                 
                 Section {
+                    
                     Toggle(isOn: $isMarked) {
                         Image(systemName: isMarked ? "bookmark.fill" : "bookmark")
                             .foregroundColor(Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)))
@@ -69,37 +69,6 @@ struct EditingPage: View {
                 }
                 .modifier(DismissingKeyboard())
                 
-//                HStack {
-//                    Image(systemName: "app")
-//                        .foregroundColor(.accentColor)
-//                        .imageScale(.large)
-//                    Text("Color")
-////                    ScrollView(.horizontal, showsIndicators: false) {
-//                        HStack {
-//                            Spacer()
-//                            HStack(spacing: 4) {
-//                                ForEach(0 ..< UserColorArray.count) { index in
-//                                    Button(action: {
-//                                        selectColorIndex = index
-//                                    }) {
-//                                        ZStack {
-//                                            Image(systemName: "circle.fill")
-//                                                .resizable()
-//                                                .frame(width: 30, height: 30)
-//                                                .foregroundColor(index == selectColorIndex ? Color.orange : Color.white)
-//
-//                                            Image(systemName: "circle.fill")
-//                                                .resizable()
-//                                                .frame(width: 24, height: 24)
-//                                                .foregroundColor(UserColorArray[index])
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                            ColorPicker("", selection: $bgColor)
-//                        }
-////                    }
-//                }
                 
                 Section {
                     Button(action: {

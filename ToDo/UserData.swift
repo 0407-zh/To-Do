@@ -31,6 +31,7 @@ class ToDo: ObservableObject {
         }
     }
     
+    //MARK: - Check
     func check(id: Int) {
         todoList[id].isChecked.toggle()
         

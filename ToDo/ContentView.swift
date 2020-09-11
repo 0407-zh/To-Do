@@ -104,9 +104,24 @@ struct DeleteButton: View {
             for i in selection {
                 userdata.delete(id: i)
             }
-            //            editingMode = false
+            editingMode = false
         }){
             Image(systemName: "trash")
+                .imageScale(.large)
+        }
+    }
+}
+
+struct EditButton: View {
+    @Binding var editingMode: Bool
+    @Binding var selection: [Int]
+    
+    var body: some View {
+        Button(action: {
+            editingMode.toggle()
+            selection.removeAll()
+        }){
+            Image(systemName: "slider.horizontal.3")
                 .imageScale(.large)
         }
     }

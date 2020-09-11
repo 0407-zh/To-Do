@@ -13,7 +13,7 @@ struct SingleCardView: View {
     @Binding var editingMode: Bool
     @Binding var selection: [Int]
     @Binding var animate: Bool
-//    @Binding var color: Color
+    
     var index: Int
     let time = Date()
     
@@ -27,7 +27,8 @@ struct SingleCardView: View {
                 //删除按钮
                 Button(action: {
                     userData.delete(id: index)
-//                    editingMode = false
+                    animate = false
+                    editingMode = false
                 }) {
                     Image(systemName: "minus.circle.fill")
                         .foregroundColor(.red)
@@ -84,8 +85,9 @@ struct SingleCardView: View {
                 Button(action: {
                     showEditingPage = true
                 }){
-                    Image(systemName: "square.and.pencil")
+                    Image(systemName: "pencil.circle")
                         .imageScale(.large)
+                        .foregroundColor(.primary)
                 }
                 .sheet(isPresented: $showEditingPage, content: {
                     EditingPage(notes: userData.todoList[index].notes,
@@ -110,8 +112,8 @@ struct SingleCardView: View {
                     }
             } else {
                 Image(systemName:  selection.firstIndex(where: { $0 == index
-                    }) == nil ? "circle" : "checkmark.circle")
-                    .foregroundColor(.blue)
+                    }) == nil ? "square" : "checkmark.square.fill")
+                    .foregroundColor(.primary)
                     .imageScale(.large)
                     .padding(.trailing)
                     .onTapGesture {
