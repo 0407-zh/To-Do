@@ -4,9 +4,9 @@
 //
 //  Created by Derek Chan on 2020/9/1.
 //
-
-import SwiftUI
-
+//
+//import SwiftUI
+//
 //struct LikeButton: View {
 //
 //    @State private var ringScale: CGFloat = 0
@@ -40,8 +40,9 @@ import SwiftUI
 //                .frame(width: 50, height: 50)
 //                .foregroundColor(color)
 //                .mask(
-//                    Image(systemName: "bookmark")
+//                    Image(systemName: "heart")
 //                        .resizable()
+//                        .foregroundColor(.red)
 //                )
 //                .scaleEffect(self.imageScale)
 //                .rotationEffect(.degrees(self.imageRotation))

@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var dateStr: String = ""
     @State var date = Date()
     @State var animate: Bool = false
+    @State var color: Color = Color.blue
     
     // 定时器，每秒触发一次
     let timer = Timer.publish(every: 3600 * 24, on: .main, in: .common).autoconnect()
@@ -38,7 +39,7 @@ struct ContentView: View {
                         ForEach(userdata.todoList){ item in
                             if !item.deleted {
                                 if !showMarkedOnly || item.isMarked {
-                                    SingleCardView(editingMode: $editingMode, selection: $selection, animate: $animate, index: item.id)
+                                    SingleCardView(editingMode: $editingMode, selection: $selection, animate: $animate, color: $color, index: item.id)
                                         .environmentObject(userdata)
                                         .padding(.top)
                                         .padding(.horizontal)
@@ -85,7 +86,7 @@ struct ContentView: View {
                             .padding(.trailing)
                     }
                     .sheet(isPresented: $showEditingPage, content: {
-                        EditingPage(editingMode: $editingMode)
+                        EditingPage(editingMode: $editingMode, color: $color)
                             .environmentObject(userdata)
                     })
                 }

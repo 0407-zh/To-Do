@@ -108,8 +108,7 @@
 				ADDF900324D7FE49006A1399 /* ContentView.swift */,
 				ADEE743624D80D4C0010C2D8 /* SingleCardView.swift */,
 				AD67673524D8229700521118 /* EditingPage.swift */,
-				ADD9D46224FDE5BD00FE016D /* EditButton.swift */,
-				ADD9D46424FDF04600FE016D /* LikeButon.swift */,
+				ADE1D51425173F1D0059232B /* Useless */,
 				ADBF102424EFDEB000036398 /* Localizable.strings */,
 				ADDF900524D7FE4A006A1399 /* Assets.xcassets */,
 				ADDF900A24D7FE4A006A1399 /* LaunchScreen.storyboard */,
@@ -125,6 +124,15 @@
 				ADDF900824D7FE4A006A1399 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ADE1D51425173F1D0059232B /* Useless */ = {
+			isa = PBXGroup;
+			children = (
+				ADD9D46224FDE5BD00FE016D /* EditButton.swift */,
+				ADD9D46424FDF04600FE016D /* LikeButon.swift */,
+			);
+			path = Useless;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,6 +391,7 @@
 				DEVELOPMENT_TEAM = YM9U6GJ233;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ToDo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -390,7 +399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.derek.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -405,6 +414,7 @@
 				DEVELOPMENT_TEAM = YM9U6GJ233;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ToDo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -413,7 +423,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.derek.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

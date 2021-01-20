@@ -17,7 +17,7 @@ struct EditingPage: View {
     @State var remindTime: Bool = false
     @Binding var editingMode: Bool
     @State var selectColorIndex: Int = 0
-    @State var color: Color = Color.blue
+//    @Binding var color: Color
     @Environment(\.presentationMode) var presentation
     
     var id: Int? = nil
@@ -69,6 +69,14 @@ struct EditingPage: View {
                 }
                 .modifier(DismissingKeyboard())
                 
+//                Section {
+//                    HStack{
+//                        Image(systemName: "eyedropper.halffull")
+//                            .foregroundColor(color)
+//                            .imageScale(.medium)
+//                        ColorPicker("Color", selection: $color)
+//                    }
+//                }
                 
                 Section {
                     Button(action: {

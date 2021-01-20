@@ -17,7 +17,6 @@ let NotificationContent = UNMutableNotificationContent()
 
 class ToDo: ObservableObject {
     @Published var todoList: [SingleToDo]
-    var cardColor: Color = UserColorArray[0]
     var count: Int = 0
     
     init() {
@@ -129,7 +128,7 @@ class ToDo: ObservableObject {
     //MARK: - 震动反馈
     func vibrationFeedback() {
         let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+        generator.notificationOccurred(.warning)
     }
     
     func impact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
@@ -150,18 +149,6 @@ struct SingleToDo: Identifiable, Codable {
     
     var id: Int = 0
 }
-
-public let UserColorArray = [
-  Color(red:75 / 255, green:166 / 255, blue: 239 / 255),
-  Color(red:161 / 255, green:206 / 255, blue: 97 / 255),
-  Color(red:248 / 255, green:214 / 255, blue: 80 / 255),
-//  Color(red:243 / 255, green:176 / 255, blue: 74 / 255),
-//  Color(red:238 / 255, green:140 / 255, blue: 111 / 255),
-  Color(red:237 / 255, green:113 / 255, blue: 165 / 255),
-  Color(red:207 / 255, green:102 / 255, blue: 247 / 255),
-  Color(red:77 / 255, green:110 / 255, blue: 247 / 255),
-  Color(red:236 / 255, green:107 / 255, blue: 102 / 255)
-]
 
 let formatter = DateFormatter()
 let currentDate = DateFormatter()

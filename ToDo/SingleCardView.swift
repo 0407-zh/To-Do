@@ -13,6 +13,7 @@ struct SingleCardView: View {
     @Binding var editingMode: Bool
     @Binding var selection: [Int]
     @Binding var animate: Bool
+    @Binding var color: Color
     
     var index: Int
     let time = Date()
@@ -21,7 +22,7 @@ struct SingleCardView: View {
         HStack {
             Rectangle()
                 .frame(width: 6)
-                .foregroundColor(Color("Card" + String(index % 6)))//卡片侧边颜色
+                .foregroundColor(color)//卡片侧边颜色
             
             if editingMode {
                 //删除按钮
@@ -97,6 +98,7 @@ struct SingleCardView: View {
                                 isRemind: userData.todoList[index].isRemind,
                                 remindTime: userData.todoList[index].remindTime,
                                 editingMode: $editingMode,
+                                color: $color,
                                 id: index)
                         .environmentObject(userData)
                 })
@@ -132,5 +134,8 @@ struct SingleCardView: View {
         .background(Color("SingleCardColor"))
         .cornerRadius(10)
         .shadow(radius: 10, x: 0, y: 10)
+        .onLongPressGesture {
+            userData.vibrationFeedback()
+        }
     }
 }
